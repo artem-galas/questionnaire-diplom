@@ -21,11 +21,13 @@ angular.module('questionary')
       .state('sign_up', {
         url: '/sign_up',
         templateUrl: 'sign_up.html',
-        controller: 'AuthCtrl'
+        controller: 'AuthCtrl',
+        controllerAs: 'vm'
       })
       .state('sign_in', {
         url: '/sign_in',
         templateUrl: 'sign_in.html',
-        controller: 'AuthCtrl'
+        controller: 'AuthCtrl',
+        controllerAs: 'vm'
       })
   }]);

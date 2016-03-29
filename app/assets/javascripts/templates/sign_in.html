@@ -1,0 +1,29 @@
+<div layout-align='center center' layout='column'>
+  <md-content class='login-block md-whiteframe-z2'>
+    <div class='header_login' layout-align='center center' layout='column'>
+      <h2>Questionary</h2>
+      <p>Sign in</p>
+    </div>
+    <md-content layout-padding>
+      <form name='signInForm'>
+        <md-input-container class="md-block" md-no-float>
+          <md-icon md-svg-icon='email'></md-icon>
+          <input ng-model='user.email' placeholder='Email' type='email'>
+        </md-input-container>
+        <md-input-container class="md-block" md-no-float>
+          <md-icon md-svg-icon="account"></md-icon>
+          <input ng-model='user.password' placeholder='Password' type='password'>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <md-button class='md-raised md-primary login-btn' ng-click='signIn()'>
+            Sign In
+          </md-button>
+        </md-input-container>
+        <p class="md-block">
+          No account?
+          <a href='/sign_up'>Sign Up</a>
+        </p>
+      </form>
+    </md-content>
+  </md-content>
+</div>

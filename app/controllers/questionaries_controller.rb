@@ -2,11 +2,19 @@ class QuestionariesController < ApplicationController
 
   def new
     @questionary = Questionary.new
+    @questionary.questions.new
   end
 
   def create
     q = current_user.questionaries.create(questionary_params)
-    # Questionary.create(questionary_params.merge(user_id: current_user.id))
+
+    p "**" *10
+    p "**" *10
+    p questionary_params
+    p "**" *10
+    p "**" *10
+
+    # q.questions.create(text: params)
     render json: q
   end
 
@@ -23,6 +31,6 @@ class QuestionariesController < ApplicationController
 
   private
   def questionary_params
-    params.require(:questionary).permit(:title)
+    params.require(:questionary).permit(:title, :questions_attributes)
   end
 end

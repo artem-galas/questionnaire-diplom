@@ -10,7 +10,7 @@ angular.module('questionary')
       enabled: true,
       requireBase: false
     });
-    $urlRouterProvider.otherwise('/');
+    //$urlRouterProvider.otherwise('/');
     $stateProvider
       .state('landing', {
         url: '/',
@@ -28,6 +28,12 @@ angular.module('questionary')
         url: '/sign_in',
         templateUrl: 'sign_in.html',
         controller: 'AuthCtrl',
+        controllerAs: 'vm'
+      })
+      .state('user.profile',{
+        url: '/users/:id/profile',
+        templateUtl: 'profile.html',
+        controller: 'UserCtrl',
         controllerAs: 'vm'
       })
   }]);

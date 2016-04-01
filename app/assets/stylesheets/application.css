@@ -11,6 +11,6 @@
  * file per style scope.
  *
  *= require_tree .
- *= require angular-material/angular-material
+ * require angular-material/angular-material
  *= require_self
  */

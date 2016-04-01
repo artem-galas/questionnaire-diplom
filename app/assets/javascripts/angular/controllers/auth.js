@@ -16,7 +16,6 @@ function AuthCtrl($location, $state, Auth) {
     Auth.register(vm.user).then(function (registeredUser) {
       console.log(registeredUser);
     }, function (error) {
-
     });
   }
 
@@ -24,7 +23,7 @@ function AuthCtrl($location, $state, Auth) {
     Auth.login(vm.user).then(function(user) {
       console.log(user);
     }, function(error) {
-      
+
     });
   }
 }

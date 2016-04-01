@@ -1,0 +1,5 @@
+<%= form_for @questionary ||= Questionary.new, url: user_questionaries_path do |f| %>
+    <%= f.text_area :title %>
+
+    <%= f.submit %>
+<% end %>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'landing#index'
-  # get '*path' => 'landing#index'
-  # get '/landing' => 'landing#index'
+  resources :users do
+    member do
+      get :profile
+    end
+    resources :questionaries
+  end
+
 end

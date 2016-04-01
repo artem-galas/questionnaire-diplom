@@ -1,0 +1,6 @@
+<div>You is
+  <b><%= current_user.email %></b>
+</div>
+<div>
+  <%= link_to 'Create questionary', new_user_questionary_path(current_user.id) %>
+</div>

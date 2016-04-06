@@ -1,0 +1,16 @@
+<div class="container">
+  <h3><%= @q.title %></h3>
+  <div class="questions">
+    <ol>
+      <% @q.questions.each do |qestion| %>
+          <li><%=qestion.text%></li>
+      <%end%>
+    </ol>
+    <!--form for create question into questionary-->
+    <%= form_for [current_user, @q, @q.questions.build] do |f| %>
+        <%= f.label :text%>:
+        <%= f.text_area :text %>
+        <%= f.submit %>
+    <% end %>
+  </div>
+</div>

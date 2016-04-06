@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     member do
       get :profile
     end
-    resources :questionaries
+    resources :questionaries do
+      resources :questions
+    end
   end
 
 end

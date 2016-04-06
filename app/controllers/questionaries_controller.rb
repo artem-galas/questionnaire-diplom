@@ -7,25 +7,21 @@ class QuestionariesController < ApplicationController
 
   def create
     q = current_user.questionaries.create(questionary_params)
-
-    p "**" *10
-    p "**" *10
-    p questionary_params
-    p "**" *10
-    p "**" *10
-
-    # q.questions.create(text: params)
     render json: q
   end
 
   def index
-    q = current_user.questionaries
-    render json: q
+    @q = current_user.questionaries
+    # render json: q, include: :questions
   end
 
   def show
     q = current_user.questionaries.find(params[:id])
     render json: q
+  end
+
+  def edit
+    @q = current_user.questionaries.find(params[:id])
   end
 
 

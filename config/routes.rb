@@ -9,4 +9,6 @@ Rails.application.routes.draw do
       end
     end
   end
+  # Route for publik qurstionary
+  get '/questionaries/:id' => 'questionaries#show'
 end

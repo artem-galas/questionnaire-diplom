@@ -16,8 +16,8 @@ class QuestionariesController < ApplicationController
   end
 
   def show
-    q = current_user.questionaries.find(params[:id])
-    render json: q
+    @q = Questionary.find(params[:id])
+    # render json: q, include: :questions
   end
 
   def edit

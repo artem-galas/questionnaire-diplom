@@ -6,6 +6,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    p "**" *100
+    p params
     q = current_user.questionaries.find(params[:questionary_id])
     question = q.questions.create(question_params)
     render json: q, include: :questions

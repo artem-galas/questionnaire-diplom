@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
- * require angular-material/angular-material
+ *= require bootstrap-peper.min
  *= require_self
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";

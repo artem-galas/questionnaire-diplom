@@ -2,7 +2,7 @@
   <% @q.each do |questionary| %>
     <h3><%= questionary.title %></h3>
     <span><%=questionary.id %></span>
-    <%= link_to edit_user_questionary_path(id:questionary.id) %>
+    <%= link_to 'Edit Questionary', edit_questionary_path(id:questionary.id) %>
     <div class="questions">
       <ol>
         <% questionary.questions.each do |qestion| %>

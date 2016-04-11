@@ -2,5 +2,8 @@
   <b><%= current_user.email %></b>
 </div>
 <div>
-  <%= link_to 'Create questionary', new_user_questionary_path(current_user.id) %>
+  <%= link_to 'All Questionaries', questionaries_path  %>
+</div>
+<div>
+  <%= link_to 'Create questionary', new_questionary_path %>
 </div>

@@ -1,9 +1,19 @@
-<div>You is
-  <b><%= current_user.email %></b>
-</div>
-<div>
-  <%= link_to 'All Questionaries', questionaries_path  %>
-</div>
-<div>
-  <%= link_to 'Create questionary', new_questionary_path %>
+<div class="container">
+  <p class="profile-email">You is
+    <b><%= current_user.email %></b>
+    <br/>
+  </p>
+  <p class="profile-name">You Name:
+    <%= current_user.first_name %>
+    <%= current_user.last_name %>
+  </p>
+  <p class="profile-login">
+    <b><%= current_user.login %></b>
+  </p>
+  <div>
+    <%= link_to 'All You Questionaries', questionaries_path  %>
+  </div>
+  <div>
+    <%= link_to 'Create questionary', new_questionary_path %>
+  </div>
 </div>

@@ -18,7 +18,6 @@
 // require angular-animate/angular-animate
 // require angular-aria/angular-aria
 // require angular-messages/angular-messages
-// require angular-material/angular-material
 // require angular-devise/lib/devise
 // require angular/app
 // require angular/routes/routes

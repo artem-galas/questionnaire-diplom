@@ -12,13 +12,9 @@
       <%end%>
     </ol>
     <!--form for create question into questionary-->
-    <%= form_for [current_user, @q, @q.questions.build] do |f| %>
+    <%= form_for [@q, @q.questions.build] do |f| %>
         <%= f.label :text%>:
         <%= f.text_area :text %>
-        <%= f.fields_for :answers  do |a| %>
-            <%= a.label :text, 'Answer text' %>
-            <%= a.text_area :text %>
-        <% end %>
         <%= f.submit %>
     <% end %>
   </div>

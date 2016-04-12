@@ -2,9 +2,6 @@
   "name": "dsl-generated dependencies",
   "dependencies": {
     "angular": "1.5.3",
-    "angular-material": "latest",
-    "angular-ui-router": "latest",
-    "angular-devise": "latest",
-    "material-design-icons": "latest"
+    "angular-ui-router": "latest"
   }
 }

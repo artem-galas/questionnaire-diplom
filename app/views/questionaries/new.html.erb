@@ -1,9 +1,1 @@
-<%= form_for @questionary, url: questionaries_path do |f| %>
-    <%= f.label :title, 'Questionary title' %>:
-    <%= f.text_area :title %>
-    <%= f.fields_for :questions do |q|%>
-        <%= q.label :text, 'Question text'%>:
-        <%= q.text_area :text %>
-      <% end %>
-    <%= f.submit %>
-<% end %>
+<ui-view></ui-view>

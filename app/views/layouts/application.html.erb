@@ -6,9 +6,8 @@
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%= render partial: 'layouts/partials/header' %>
-<%= yield %>
-
+<body ng-app="questionary">
+  <%= render partial: 'layouts/partials/header' %>
+  <%= yield %>
 </body>
 </html>

@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('questionary')
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$mdIconProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider, $mdIconProvider){
-
-    $mdIconProvider.defaultIconSet('/mdi.svg');
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider){
 
     $locationProvider.html5Mode({
       enabled: true,
@@ -12,28 +10,10 @@ angular.module('questionary')
     });
     //$urlRouterProvider.otherwise('/');
     $stateProvider
-      .state('landing', {
-        url: '/',
-        templateUrl: 'landing.html',
-        controller: 'LandingCtrl',
+      .state('questionaryNew', {
+        url: '/users/questionaries/new',
+        templateUrl: 'questionaryNew.html',
+        controller: 'QuestionaryCtrl',
         controllerAs: 'vm'
-      })
-      .state('sign_up', {
-        url: '/sign_up',
-        templateUrl: 'sign_up.html',
-        controller: 'AuthCtrl',
-        controllerAs: 'vm'
-      })
-      .state('sign_in', {
-        url: '/sign_in',
-        templateUrl: 'sign_in.html',
-        controller: 'AuthCtrl',
-        controllerAs: 'vm'
-      })
-      .state('user.profile',{
-        url: '/users/:id/profile',
-        templateUtl: 'profile.html',
-        controller: 'UserCtrl',
-        controllerAs: 'vm'
-      })
+      });
   }]);

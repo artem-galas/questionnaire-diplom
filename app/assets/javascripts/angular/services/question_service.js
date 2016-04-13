@@ -15,6 +15,7 @@ function QuestionService() {
   service.addQuestion = addQuestion;
   service.removeQuestion = removeQuestion;
   service.addAnswer = addAnswer;
+  service.removeAnswer = removeAnswer;
 
   return service;
 
@@ -36,5 +37,10 @@ function QuestionService() {
     question.answers.push({
       text: ''
     });
+  }
+
+  function removeAnswer(question, answer) {
+    let index = question.answers.indexOf(answer);
+    question.answers.splice(index, 1);
   }
 }

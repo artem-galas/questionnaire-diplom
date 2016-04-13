@@ -28,9 +28,14 @@ function answers() {
     let questionService = QuestionService;
 
     vm.addAnswer = addAnswer;
+    vm.removeAnswer = removeAnswer;
 
     function addAnswer(question) {
       questionService.addAnswer(question);
+    }
+
+    function removeAnswer(question,answer) {
+      questionService.removeAnswer(question, answer);
     }
   }
 }

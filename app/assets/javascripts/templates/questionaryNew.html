@@ -1,20 +1,9 @@
-<div class="container">
-  Helo I'm Angular
+<div class="container questionary-form">
   <form>
     <fieldset>
-      <legend contenteditable="true">Questionary Name</legend>
-      <div class="form-group" ng-repeat="question in vm.questions">
-        <label for="textArea" class="col-lg-2 control-label">Question {{$index+1}}</label>
-        <div class="col-lg-5">
-          <textarea class="form-control" style="resize: none" rows="3" id="textArea" placeholder="Question text" ng-model="question.text"></textarea>
-        </div>
-      </div>
-      <a class="btn btn-default pull-right" ng-click="vm.addQuestion()"><i class="fa fa-plus"> New Question</i></a>
+      <legend class="questionary-form-name" contenteditable="true">Questionary Name</legend>
+      <question questions="vm.questions"></question>
     </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
   </form>
 </div>
-
-
-
-

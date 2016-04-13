@@ -2,17 +2,10 @@
 
 angular.module('questionary')
   .controller('QuestionaryCtrl', QuestionaryCtrl);
-QuestionaryCtrl.$inject = ['$location', '$state'];
+QuestionaryCtrl.$inject = ['$location', '$state', 'QuestionService'];
 
-function QuestionaryCtrl($location, $state) {
-  var vm = this;
-  vm.questions = [{}];
-  vm.addQuestion = addQuestion;
-
-  function addQuestion() {
-    console.log ('here');
-    vm.questions.push({});
-  }
-
-  console.log('Hello');
+function QuestionaryCtrl($location, $state, QuestionService) {
+  let vm = this;
+  let questionService = QuestionService;
+  vm.questions = questionService.question;
 }

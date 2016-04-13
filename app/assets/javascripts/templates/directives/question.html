@@ -1,0 +1,21 @@
+<div class="form-group question" ng-repeat="question in questions">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 pull-left">
+      <label for="textArea" class="control-label">Question {{$index+1}}</label>
+    </div>
+    <div class="col-lg-2 col-md-2 pull-right remove-question text-right">
+      <label class="control-label" data-toggle="tooltip"
+             ng-click="vm.removeQuestion(question)"
+             data-placement="top" title="" data-original-title="Delete question" tooltip>
+        <i class="fa fa-times"></i>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <textarea class="form-control" style="resize: none" rows="3" id="textArea" placeholder="Question text" ng-model="question.text"></textarea>
+    </div>
+  </div>
+  <answers question="question"></answers>
+</div>
+<a class="btn btn-default pull-right" ng-click="vm.addQuestion()"><i class="fa fa-plus"></i>New Question</a>

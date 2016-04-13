@@ -1,0 +1,24 @@
+<div class="row answers">
+  <div class="col-lg-8 col-md-8 text-center col-lg-offset-1 col-md-offset-1">
+    <div ng-repeat="answer in question.answers">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <input type="radio" ng-model="answer.text" ng-value="answer.text">
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <input type="text" ng-model="answer.text" class="form-control" placeholder="Answer text">
+          </div>
+          <div class="col-lg-2 col-md-2 control-label pull-right remove-answer text-left">
+            <label data-toggle="tooltip"
+                   ng-click="vm.removeAnswer(answer)"
+                   data-placement="top" title="" data-original-title="Delete answer" tooltip>
+              <i class="fa fa-times"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-primary btn-light-blue btn-block" ng-click="vm.addAnswer(question)"><i class="fa fa-plus"></i>New Answer</a>

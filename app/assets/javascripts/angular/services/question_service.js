@@ -3,7 +3,7 @@
 angular.module('questionary')
   .factory('QuestionService', QuestionService);
 
-function QuestionService() {
+function QuestionService($http) {
   let service = this;
   service.question = [{
     text: '',
@@ -16,6 +16,7 @@ function QuestionService() {
   service.removeQuestion = removeQuestion;
   service.addAnswer = addAnswer;
   service.removeAnswer = removeAnswer;
+  service.sendFormQuestionary = sendFormQuestionary;
 
   return service;
 
@@ -42,5 +43,15 @@ function QuestionService() {
   function removeAnswer(question, answer) {
     let index = question.answers.indexOf(answer);
     question.answers.splice(index, 1);
+  }
+
+  function sendFormQuestionary(data) {
+    console.log ('data= ', data);
+    //console.log ('dataJSON= ', angular.toJSON(data));
+    //console.log ('dataJson= ', angular.toJson(data));
+    //data = angular.toJson(data);
+    $http.post('/users/questionaries', data).then(function(responce){
+      console.log (responce);
+    });
   }
 }

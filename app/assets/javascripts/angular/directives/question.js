@@ -27,8 +27,8 @@ function question() {
     let vm = this;
     let questionService = QuestionService;
 
-    vm.removeQuestion = removeQuestion;
     vm.addQuestion = addQuestion;
+    vm.removeQuestion = removeQuestion;
 
     function addQuestion() {
       questionService.addQuestion();

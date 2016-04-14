@@ -14,6 +14,22 @@ angular.module('questionary')
         url: '/users/questionaries/new',
         templateUrl: 'questionaryNew.html',
         controller: 'QuestionaryCtrl',
-        controllerAs: 'vm'
-      });
+        controllerAs: 'vm',
+        resolve: {
+          questionary: ['QuestionService','$stateParams', function(QuestionService, $stateParams){
+            return  QuestionService.questionary;
+          }]
+        }
+      })
+      .state('questionaryEdit', {
+        url: '/users/questionaries/:id/edit',
+        templateUrl: 'questionaryEdit.html',
+        controller: 'QuestionaryCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          questionary: ['QuestionService','$stateParams', function(QuestionService, $stateParams){
+            return  QuestionService.getQuestionary($stateParams.id);
+          }]
+        }
+      })
   }]);

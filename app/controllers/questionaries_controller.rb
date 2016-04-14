@@ -7,7 +7,15 @@ class QuestionariesController < ApplicationController
 
   def create
     q = current_user.questionaries.create(questionary_params)
-    render json: q
+    # Create recursive questions and answers.
+    questionsParams = params[:questionary][:questions]
+    questionsParams.each do |questionParams|
+      question = q.questions.create(text: questionParams['text'])
+      questionParams['answers'].each do |answerParams|
+        question.answers.create(text: answerParams['text'])
+      end
+    end
+    render json: q, include: :questions
   end
 
   def index
@@ -22,11 +30,20 @@ class QuestionariesController < ApplicationController
 
   def edit
     @q = current_user.questionaries.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: @q,
+               include: {
+                   questions: {include: :answers}
+               }
+      }
+    end
   end
 
 
   private
   def questionary_params
-    params.require(:questionary).permit(:title, :questions_attributes)
+    params.require(:questionary).permit(:title)
   end
 end

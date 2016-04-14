@@ -2,5 +2,6 @@
 
 angular.module('questionary', [
   'ui.router',
-  'templates'
+  'templates',
+  'content-editable'
 ]);

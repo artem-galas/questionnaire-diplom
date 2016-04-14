@@ -16,9 +16,10 @@
 //= require angular/angular
 //= require angular-rails-templates
 //= require angular-ui-router/release/angular-ui-router
+//= require ng-content-editable/dist/ng-content-editable.min
 //= require angular/app
 //= require angular/routes/routes
+//= require_tree ./angular/services
 //= require_tree ./angular/controllers
 //= require_tree ./angular/directives
-//= require_tree ./angular/services
 //= require_tree ./templates

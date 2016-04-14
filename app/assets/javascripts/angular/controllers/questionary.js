@@ -2,18 +2,19 @@
 
 angular.module('questionary')
   .controller('QuestionaryCtrl', QuestionaryCtrl);
-QuestionaryCtrl.$inject = ['$location', '$state', 'QuestionService', '$scope'];
+QuestionaryCtrl.$inject = ['$location', '$state', 'QuestionService', 'questionary'];
 
-function QuestionaryCtrl($location, $state, QuestionService, $scope) {
+function QuestionaryCtrl($location, $state, QuestionService, questionary) {
   let vm = this;
   let questionService = QuestionService;
-  vm.questions = questionService.question;
+  //vm.questionary = questionService.questionary;
+  vm.questionary = questionary;
+
+  vm.questions = vm.questionary.questions;
   vm.saveQuestionary = saveQuestionary;
 
   function saveQuestionary() {
-    //let data = angular.toJson(vm.questions);
-    let data = vm.questions;
-    console.log (angular.toJson($scope.questionaryNew));
+    let data = vm.questionary;
     questionService.sendFormQuestionary(data);
   }
 }

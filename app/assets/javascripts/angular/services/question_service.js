@@ -3,8 +3,9 @@
 angular.module('questionary')
   .factory('QuestionService', QuestionService);
 
-function QuestionService($http) {
+function QuestionService($http, $q) {
   let service = this;
+
   service.question = [{
     text: '',
     answers: [{
@@ -12,11 +13,18 @@ function QuestionService($http) {
     }]
   }];
 
+  service.questionary = {
+    title: '',
+    questions: service.question
+  };
+
+
   service.addQuestion = addQuestion;
   service.removeQuestion = removeQuestion;
   service.addAnswer = addAnswer;
   service.removeAnswer = removeAnswer;
   service.sendFormQuestionary = sendFormQuestionary;
+  service.getQuestionary = getQuestionary;
 
   return service;
 
@@ -45,13 +53,27 @@ function QuestionService($http) {
     question.answers.splice(index, 1);
   }
 
-  function sendFormQuestionary(data) {
-    console.log ('data= ', data);
-    //console.log ('dataJSON= ', angular.toJSON(data));
-    //console.log ('dataJson= ', angular.toJson(data));
-    //data = angular.toJson(data);
-    $http.post('/users/questionaries', data).then(function(responce){
-      console.log (responce);
+  function sendFormQuestionary() {
+    let questionary = {
+      questionary: service.questionary
+    };
+    console.log ('Questionary', questionary);
+    $http.post('/users/questionaries', questionary).then(function(responce){
+      console.log (responce.data);
+    }, function(error){
+      console.log (error);
     });
+  }
+
+  function getQuestionary(id) {
+    if (service.questionaryEdit) {
+      return $q.resolve(service.questionaryEdit)
+    } else {
+      return $http.get(`/users/questionaries/${id}/edit.json`).then(function (responce) {
+        service.questionaryEdit = responce.data;
+        console.log('ServiceQuestionary= ', service.questionaryEdit);
+        return service.questionaryEdit
+      });
+    }
   }
 }

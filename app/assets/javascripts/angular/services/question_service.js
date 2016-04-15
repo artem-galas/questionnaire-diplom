@@ -58,6 +58,20 @@ function QuestionService($http, $q) {
       questionary: service.questionary
     };
     console.log ('Questionary', questionary);
+
+    questionary.questionary.questions_attributes = {};
+    service.questionary.questions.forEach(function(question, i){
+      questionary.questionary.questions_attributes[i.toString()] = question;
+
+      questionary.questionary.questions_attributes[i.toString()].answers_attributes =
+        questionary.questionary.questions_attributes[i.toString()].answers;
+      delete questionary.questionary.questions_attributes[i.toString()].answers;
+    });
+    console.log (questionary.questionary.questions_attributes);
+    delete questionary.questionary.questions;
+
+    //url =
+
     $http.post('/users/questionaries', questionary).then(function(responce){
       console.log (responce.data);
     }, function(error){

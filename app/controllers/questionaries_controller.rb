@@ -8,14 +8,22 @@ class QuestionariesController < ApplicationController
   def create
     q = current_user.questionaries.create(questionary_params)
     # Create recursive questions and answers.
-    questionsParams = params[:questionary][:questions]
-    questionsParams.each do |questionParams|
-      question = q.questions.create(text: questionParams['text'])
-      questionParams['answers'].each do |answerParams|
-        question.answers.create(text: answerParams['text'])
-      end
-    end
-    render json: q, include: :questions
+    # questionsParams = params[:questionary][:questions]
+    # questionsParams.each do |questionParams|
+    #   question = q.questions.create(text: questionParams['text'])
+    #   questionParams['answers'].each do |answerParams|
+    #     question.answers.create(text: answerParams['text'])
+    #   end
+    # end
+
+    p "***" *10
+    p questionary_params
+    p "***" *10
+
+    render json: q,
+           include: {
+               questions: {include: :answers}
+           }
   end
 
   def index
@@ -44,6 +52,7 @@ class QuestionariesController < ApplicationController
 
   private
   def questionary_params
-    params.require(:questionary).permit(:title)
+    # params.require(:questionary).permit(:title, :question_attributes)
+    params.require(:questionary).permit(:title, questions_attributes: [:id, :text, answers_attributes:[:id,:text]] )
   end
 end

@@ -3,7 +3,7 @@
 angular.module('questionary')
   .factory('QuestionService', QuestionService);
 
-function QuestionService($http, $q) {
+function QuestionService($http, $q, $stateParams) {
   let service = this;
 
   service.question = [{
@@ -29,7 +29,7 @@ function QuestionService($http, $q) {
   return service;
 
   function addQuestion() {
-    service.question.push({
+    service.questionary.questions.push({
       text:'',
       answers:[{
         text:''
@@ -53,30 +53,54 @@ function QuestionService($http, $q) {
     question.answers.splice(index, 1);
   }
 
-  function sendFormQuestionary() {
+  function sendFormQuestionary(data) {
     let questionary = {
-      questionary: service.questionary
+      questionary: data
     };
     console.log ('Questionary', questionary);
 
     questionary.questionary.questions_attributes = {};
-    service.questionary.questions.forEach(function(question, i){
-      questionary.questionary.questions_attributes[i.toString()] = question;
+    questionary.questionary.questions.forEach(function(question, i){
+      console.log ('QUEST',question);
+      if (question.id) {
+        var index = question.id
+      }
+      else {
+        var index = i.toString()
+      }
+      questionary.questionary.questions_attributes[index] = question;
 
-      questionary.questionary.questions_attributes[i.toString()].answers_attributes =
-        questionary.questionary.questions_attributes[i.toString()].answers;
-      delete questionary.questionary.questions_attributes[i.toString()].answers;
+      questionary.questionary.questions_attributes[index].answers_attributes =
+        questionary.questionary.questions_attributes[index].answers;
+      delete questionary.questionary.questions_attributes[index].answers;
     });
-    console.log (questionary.questionary.questions_attributes);
     delete questionary.questionary.questions;
 
-    //url =
+    if ($stateParams.id) {
+      let url = `/users/questionaries/${$stateParams.id}`;
 
-    $http.post('/users/questionaries', questionary).then(function(responce){
-      console.log (responce.data);
-    }, function(error){
-      console.log (error);
-    });
+      console.log ('data', data);
+
+      $http.patch(url, questionary).then(function(responce){
+        console.log (responce.data);
+      }, function(error){
+        console.log (error);
+      });
+    }
+    else {
+      let url = `/users/questionaries/`;
+      $http.post(url, questionary).then(function(responce){
+        console.log (responce.data);
+      }, function(error){
+        console.log (error);
+      });
+    }
+
+    //$http.post('/users/questionaries', questionary).then(function(responce){
+    //  console.log (responce.data);
+    //}, function(error){
+    //  console.log (error);
+    //});
   }
 
   function getQuestionary(id) {
@@ -85,6 +109,7 @@ function QuestionService($http, $q) {
     } else {
       return $http.get(`/users/questionaries/${id}/edit.json`).then(function (responce) {
         service.questionaryEdit = responce.data;
+        service.questionary = service.questionaryEdit;
         console.log('ServiceQuestionary= ', service.questionaryEdit);
         return service.questionaryEdit
       });

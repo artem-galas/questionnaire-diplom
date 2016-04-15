@@ -49,10 +49,18 @@ class QuestionariesController < ApplicationController
     end
   end
 
+  def update
+    q = Questionary.find(params[:id])
+    q.update(questionary_params)
+    render json: q,
+          include: {
+              questions: {include: :answers}
+          }
+  end
+
 
   private
   def questionary_params
-    # params.require(:questionary).permit(:title, :question_attributes)
     params.require(:questionary).permit(:title, questions_attributes: [:id, :text, answers_attributes:[:id,:text]] )
   end
 end

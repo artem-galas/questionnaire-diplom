@@ -31,6 +31,7 @@ function question() {
     vm.removeQuestion = removeQuestion;
 
     function addQuestion() {
+      console.log ('ddd');
       questionService.addQuestion();
     }
 

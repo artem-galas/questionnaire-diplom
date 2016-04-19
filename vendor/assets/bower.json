@@ -3,6 +3,7 @@
   "dependencies": {
     "angular": "1.5.3",
     "angular-ui-router": "latest",
-    "ng-content-editable": "latest"
+    "ng-content-editable": "latest",
+    "lodash": "latest"
   }
 }

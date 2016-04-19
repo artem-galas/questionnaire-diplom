@@ -2,7 +2,7 @@
   <form name="questionaryNew" ng-submit="vm.saveQuestionary()">
     <fieldset>
       <legend class="questionary-form-name" contenteditable ng-model="vm.questionary.title" only-text="true"></legend>
-      <question questions="vm.questions"></question>
+      <question ng-repeat="question in vm.questions" index="{{$index+1}}" question="question"></question>
     </fieldset>
     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
   </form>

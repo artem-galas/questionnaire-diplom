@@ -1,7 +1,7 @@
-<div class="form-group question" ng-repeat="question in questions">
+<div class="form-group question clearfix">
   <div class="row">
     <div class="col-lg-2 col-md-2 pull-left">
-      <label for="textArea" class="control-label">Question {{$index+1}}</label>
+      <label for="textArea" class="control-label">Question {{index}}</label>
     </div>
     <div class="col-lg-2 col-md-2 pull-right remove-question text-right">
       <label class="control-label" data-toggle="tooltip"
@@ -16,6 +16,11 @@
       <textarea class="form-control" style="resize: none" rows="2" id="textArea" placeholder="Question text" ng-model="question.text"></textarea>
     </div>
   </div>
-  <answers question="question"></answers>
+  <div class="row answers">
+    <div class="col-lg-8 col-md-8 text-center col-lg-offset-1 col-md-offset-1">
+      <answer answer="answer" question="question" ng-repeat="answer in question.answers"></answer>
+    </div>
+  </div>
+  <a class="btn btn-primary btn-light-blue btn-block" ng-click="vm.addAnswer(question)"><i class="fa fa-plus"></i>New Answer</a>
+  <a class="btn btn-default pull-right add-question" ng-click="vm.addQuestion()"><i class="fa fa-plus"></i>New Question</a>
 </div>
-<a class="btn btn-default pull-right" ng-click="vm.addQuestion()"><i class="fa fa-plus"></i>New Question</a>

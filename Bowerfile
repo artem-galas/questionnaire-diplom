@@ -4,3 +4,4 @@
 asset 'angular', '1.5.3'
 asset 'angular-ui-router'
 asset 'ng-content-editable'
+asset 'lodash'

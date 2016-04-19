@@ -2,12 +2,13 @@
 angular.module('questionary')
   /** @desc directive for answers
    * @example <answers model='question.answers'></answer> */
-  .directive('answers', answers);
+  .directive('answer', answer);
 
-function answers() {
+function answer() {
   let directive = {
     link: link,
     scope: {
+      answer: '=',
       question: '='
     },
     templateUrl: 'directives/answers.html',
@@ -26,13 +27,7 @@ function answers() {
   function answerCtrl ($scope, QuestionService) {
     let vm = this;
     let questionService = QuestionService;
-
-    vm.addAnswer = addAnswer;
     vm.removeAnswer = removeAnswer;
-
-    function addAnswer(question) {
-      questionService.addAnswer(question);
-    }
 
     function removeAnswer(question,answer) {
       questionService.removeAnswer(question, answer);

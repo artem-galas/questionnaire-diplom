@@ -8,7 +8,8 @@ function question() {
   let directive = {
     link: link,
     scope: {
-      questions: '='
+      question: '=',
+      index: '@'
     },
     templateUrl: 'directives/question.html',
     restrict: 'E',
@@ -29,14 +30,19 @@ function question() {
 
     vm.addQuestion = addQuestion;
     vm.removeQuestion = removeQuestion;
+    vm.addAnswer = addAnswer;
 
     function addQuestion() {
-      console.log ('ddd');
       questionService.addQuestion();
     }
 
     function removeQuestion(question) {
-      questionService.removeQuestion(question)
+      questionService.removeQuestion(question);
+      vm.removed = true;
+    }
+
+    function addAnswer(question) {
+      questionService.addAnswer(question);
     }
   }
 }

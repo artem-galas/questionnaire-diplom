@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require lodash/lodash
 //= require angular/angular
 //= require angular-rails-templates
 //= require angular-ui-router/release/angular-ui-router

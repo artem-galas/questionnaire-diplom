@@ -18,7 +18,6 @@ function QuestionService($http, $q, $stateParams) {
     questions: service.question
   };
 
-
   service.addQuestion = addQuestion;
   service.removeQuestion = removeQuestion;
   service.addAnswer = addAnswer;
@@ -38,8 +37,15 @@ function QuestionService($http, $q, $stateParams) {
   }
 
   function removeQuestion(question) {
-    let index = service.question.indexOf(question);
-    service.question.splice(index, 1);
+    let index = service.questionary.questions.indexOf(question);
+    service.questionary.questions.splice(index, 1);
+    if (question.id) {
+      service.questionary.questions.push({
+        id: question.id,
+        _destroy: '1'
+      });
+    }
+    console.log (service.questionary.questions);
   }
 
   function addAnswer(question) {
@@ -55,13 +61,11 @@ function QuestionService($http, $q, $stateParams) {
 
   function sendFormQuestionary(data) {
     let questionary = {
-      questionary: data
+      questionary: angular.copy(data)
     };
-    console.log ('Questionary', questionary);
 
     questionary.questionary.questions_attributes = {};
     questionary.questionary.questions.forEach(function(question, i){
-      console.log ('QUEST',question);
       if (question.id) {
         var index = question.id
       }
@@ -76,13 +80,11 @@ function QuestionService($http, $q, $stateParams) {
     });
     delete questionary.questionary.questions;
 
+    // var url = $stateParams.id ? `/users/questionaries/${$stateParams.id}` : `/users/questionaries/`;
+
     if ($stateParams.id) {
       let url = `/users/questionaries/${$stateParams.id}`;
-
-      console.log ('data', data);
-
       $http.patch(url, questionary).then(function(responce){
-        console.log (responce.data);
       }, function(error){
         console.log (error);
       });
@@ -90,17 +92,10 @@ function QuestionService($http, $q, $stateParams) {
     else {
       let url = `/users/questionaries/`;
       $http.post(url, questionary).then(function(responce){
-        console.log (responce.data);
       }, function(error){
         console.log (error);
       });
     }
-
-    //$http.post('/users/questionaries', questionary).then(function(responce){
-    //  console.log (responce.data);
-    //}, function(error){
-    //  console.log (error);
-    //});
   }
 
   function getQuestionary(id) {

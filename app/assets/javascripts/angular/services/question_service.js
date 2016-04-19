@@ -57,6 +57,12 @@ function QuestionService($http, $q, $stateParams) {
   function removeAnswer(question, answer) {
     let index = question.answers.indexOf(answer);
     question.answers.splice(index, 1);
+    if (answer.id) {
+      question.answers.push({
+        id: answer.id,
+        _destroy: '1'
+      });
+    }
   }
 
   function sendFormQuestionary(data) {

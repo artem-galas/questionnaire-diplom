@@ -61,6 +61,7 @@ class QuestionariesController < ApplicationController
 
   private
   def questionary_params
-    params.require(:questionary).permit(:title, questions_attributes: [:id, :text, :_destroy, answers_attributes:[:id,:text]] )
+    params.require(:questionary).permit(:title, questions_attributes: [:id, :text, :_destroy,
+                                                                       answers_attributes:[:id, :text, :_destroy]] )
   end
 end

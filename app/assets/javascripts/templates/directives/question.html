@@ -18,7 +18,7 @@
   </div>
   <div class="row answers">
     <div class="col-lg-8 col-md-8 text-center col-lg-offset-1 col-md-offset-1">
-      <answer answer="answer" question="question" ng-repeat="answer in question.answers"></answer>
+      <answer ng-hide="answer._destroy" answer="answer" question="question" ng-repeat="answer in question.answers"></answer>
     </div>
   </div>
   <a class="btn btn-primary btn-light-blue btn-block" ng-click="vm.addAnswer(question)"><i class="fa fa-plus"></i>New Answer</a>

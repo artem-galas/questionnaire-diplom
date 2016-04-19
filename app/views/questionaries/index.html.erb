@@ -3,22 +3,7 @@
     <h3><%= questionary.title %></h3>
     <span><%=questionary.id %></span>
     <%= link_to 'Edit Questionary', edit_questionary_path(id:questionary.id) %>
-    <div class="questions">
-      <ol>
-        <% questionary.questions.each do |qestion| %>
-            <li><%=qestion.text%></li>
-          <ol>
-            <% qestion.answers.each do |answer| %>
-              <li>
-                <label>
-                  <%= radio_button('qestion', 'answers', answer.text) %> <%= answer.text %>
-                </label>
-              </li>
-            <% end %>
-          </ol>
-        <%end%>
-      </ol>
-    </div>
+    <%= render partial: "questions", locals: {questions: questionary.questions} %>
   <%end%>
   <br/>
   <%= link_to 'Create new questionary', new_questionary_path %>

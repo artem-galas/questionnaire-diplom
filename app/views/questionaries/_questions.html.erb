@@ -1,0 +1,16 @@
+<div class="questions">
+  <ol>
+    <% questions.each do |qestion| %>
+        <li><%=qestion.text%></li>
+        <ol>
+          <% qestion.answers.each do |answer| %>
+              <li>
+                <label>
+                  <%= radio_button("qestion[#{qestion.id}]", 'answers', answer.text) %> <%= answer.text %>
+                </label>
+              </li>
+          <% end %>
+        </ol>
+    <%end%>
+  </ol>
+</div>

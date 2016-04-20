@@ -32,6 +32,7 @@ class QuestionariesController < ApplicationController
   end
 
   def show
+    @statistics = Statistic.new
     @q = Questionary.find(params[:id])
     # render json: q, include: :questions
   end

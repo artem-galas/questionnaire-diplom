@@ -2,12 +2,11 @@
 
 angular.module('questionary')
   .controller('QuestionaryCtrl', QuestionaryCtrl);
-QuestionaryCtrl.$inject = ['$location', '$state', 'QuestionService', 'questionary'];
+QuestionaryCtrl.$inject = ['QuestionService', 'questionary'];
 
-function QuestionaryCtrl($location, $state, QuestionService, questionary) {
+function QuestionaryCtrl(QuestionService, questionary) {
   let vm = this;
   let questionService = QuestionService;
-  //vm.questionary = questionService.questionary;
   vm.questionary = questionary;
 
   vm.questions = vm.questionary.questions;

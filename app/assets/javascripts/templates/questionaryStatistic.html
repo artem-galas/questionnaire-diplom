@@ -1,0 +1,17 @@
+<div class="container">
+  <h3 ng-bind="vm.questionary.title"></h3>
+    <div class="questions">
+      <ol>
+        <li ng-repeat="question in vm.questionary.questions">
+          {{question.text}}
+          <ol>
+            <li ng-repeat="answer in question.answers">
+              <label>
+                {{answer.text}} - {{answer.answer_count}}
+              </label>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+</div>

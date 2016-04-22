@@ -24,6 +24,8 @@ function QuestionService($http, $q, $stateParams) {
   service.removeAnswer = removeAnswer;
   service.sendFormQuestionary = sendFormQuestionary;
   service.getQuestionary = getQuestionary;
+  service.getQuestionaryShow = getQuestionaryShow;
+  service.answerSubmit = answerSubmit;
 
   return service;
 
@@ -116,4 +118,25 @@ function QuestionService($http, $q, $stateParams) {
       });
     }
   }
+
+  function getQuestionaryShow(id) {
+    if (service.questionaryEdit) {
+      return $q.resolve(service.questionaryEdit)
+    } else {
+      return $http.get(`/questionaries/${id}.json`).then(function (responce) {
+        service.questionaryShow = responce.data;
+        service.questionary = service.questionaryShow;
+        console.log('questionaryShow= ', service.questionaryShow);
+        return service.questionaryShow
+      });
+    }
+  }
+
+  function answerSubmit(data) {
+    console.log (data);
+    $http.patch('/answers', data).then(function (responce) {
+      console.log (responce);
+    })
+  }
+
 }

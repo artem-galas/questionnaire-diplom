@@ -1,0 +1,22 @@
+<div class="container">
+  <h3 ng-bind="vm.questionary.title"></h3>
+  <form name="answeredForm" ng-submit="vm.answerSubmit()">
+    <div class="questions">
+      <ol>
+        <li ng-repeat="question in vm.questionary.questions">
+          {{question.text}}
+          <ol>
+            <li ng-repeat="answer in question.answers">
+              <label for="{{answer.id}}">
+                <input type="radio" id="{{answer.id}}" name="question[{{question.id}}]answer"
+                       ng-click="vm.answer(answer.id, question.id)" ng-value="answer.id">
+                {{answer.text}}
+              </label>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+    <button type="submit" class="btn btn-primary">Answer</button>
+  </form>
+</div>

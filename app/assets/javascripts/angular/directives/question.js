@@ -22,9 +22,9 @@ function question() {
 
   }
 
-  questionCtrl.$inject = ['$scope', 'QuestionService'];
+  questionCtrl.$inject = ['QuestionService'];
 
-  function questionCtrl($scope, QuestionService) {
+  function questionCtrl(QuestionService) {
     let vm = this;
     let questionService = QuestionService;
 

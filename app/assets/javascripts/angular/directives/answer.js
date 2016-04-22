@@ -22,9 +22,9 @@ function answer() {
 
   }
 
-  answerCtrl.$inject = ['$scope', 'QuestionService'];
+  answerCtrl.$inject = ['QuestionService'];
 
-  function answerCtrl ($scope, QuestionService) {
+  function answerCtrl (QuestionService) {
     let vm = this;
     let questionService = QuestionService;
     vm.removeAnswer = removeAnswer;

@@ -32,17 +32,25 @@ class QuestionariesController < ApplicationController
   end
 
   def show
-    @statistics = Statistic.new
-    @q = Questionary.find(params[:id])
-    # render json: q, include: :questions
-  end
-
-  def edit
-    @q = current_user.questionaries.find(params[:id])
+    # @statistics = Statistic.new
+    q = Questionary.find(params[:id])
     respond_to do |format|
       format.html
       format.json {
-        render json: @q,
+      render json: q,
+             include: {
+                 questions: {include: :answers}
+             }
+      }
+    end
+  end
+
+  def edit
+    q = current_user.questionaries.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: q,
                include: {
                    questions: {include: :answers}
                }
@@ -57,6 +65,9 @@ class QuestionariesController < ApplicationController
           include: {
               questions: {include: :answers}
           }
+  end
+
+  def statistic
   end
 
 

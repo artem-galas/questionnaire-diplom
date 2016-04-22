@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   end
   # Route for public qurstionary
   get '/questionaries/:id' => 'questionaries#show'
-
-
-  resources :statistics
+  get '/users/questionaries/:id/statistic' => 'questionaries#statistic'
+  patch '/answers' => 'answers#update'
 
 end

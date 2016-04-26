@@ -28,14 +28,18 @@ function question() {
     let vm = this;
     let questionService = QuestionService;
 
-    vm.addQuestion = addQuestion;
+    vm.types = [{
+      display_value: 'One select',
+      type_question: 'one_select'
+    },
+    {
+      display_value: 'Multi select',
+      type_question: 'multi_select'
+    }];
+
     vm.removeQuestion = removeQuestion;
     vm.addAnswer = addAnswer;
-
-    function addQuestion() {
-      questionService.addQuestion();
-    }
-
+    
     function removeQuestion(question) {
       questionService.removeQuestion(question);
       vm.removed = true;

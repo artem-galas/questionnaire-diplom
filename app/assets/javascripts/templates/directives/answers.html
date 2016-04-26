@@ -1,11 +1,12 @@
 <div>
   <div class="form-group clearfix">
     <div class="row">
-      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="radio" ng-model="answer.text" ng-value="answer.text">
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 answer-checkbox">
+        <input type="radio" ng-if="question.type_question === 'one_select'" ng-model="answer.text" ng-value="answer.text">
+        <input type="checkbox" ng-if="question.type_question === 'multi_select'" ng-model="answer.text" ng-value="answer.text">
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-        <input type="text" ng-model="answer.text" class="form-control" placeholder="Answer text">
+        <input type="text" ng-model="answer.text" ng-keyup="$event.keyCode === 13 ? vm.addAnswer(question) : false" class="form-control answer-text" placeholder="Answer text">
       </div>
       <div class="col-lg-2 col-md-2 control-label pull-right remove-answer text-left">
         <label data-toggle="tooltip"

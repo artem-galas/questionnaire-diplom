@@ -7,8 +7,11 @@ class QuestionsController < ApplicationController
 
   def create
     q = current_user.questionaries.find(params[:questionary_id])
-    question = q.questions.create(question_params)
-    render json: q, include: :questions
+    if question = q.questions.create(question_params)
+      render nothing:true, status: :ok
+    else
+      render nothing:true, status: :internal_server_error
+    end
   end
 
   private

@@ -7,11 +7,26 @@
           {{question.text}}
           <ol>
             <li ng-repeat="answer in question.answers">
-              <label for="{{answer.id}}">
+              <label for="{{answer.id}}" ng-show="question.type_question === 'one_select'">
+
+                <!--<input type="radio" ng-show="question.type_question === 'one_select'" ng-model="answer.text" ng-value="answer.text">-->
+                <!--<input type="checkbox" ng-show="question.type_question === 'multi_select'" ng-model="answer.text" ng-value="answer.text">-->
+
                 <input type="radio" id="{{answer.id}}" name="question[{{question.id}}]answer"
                        ng-click="vm.answer(answer.id, question.id)" ng-value="answer.id">
                 {{answer.text}}
               </label>
+
+              <label for="{{answer.id}}" ng-show="question.type_question === 'multi_select'">
+
+                <!--<input type="radio" ng-show="question.type_question === 'one_select'" ng-model="answer.text" ng-value="answer.text">-->
+                <!--<input type="checkbox" ng-show="question.type_question === 'multi_select'" ng-model="answer.text" ng-value="answer.text">-->
+
+                <input type="checkbox" id="{{answer.id}}" name="question[{{question.id}}]answer"
+                       ng-click="vm.answer(answer.id, question.id)" ng-value="answer.id">
+                {{answer.text}}
+              </label>
+
             </li>
           </ol>
         </li>

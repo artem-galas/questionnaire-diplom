@@ -10,7 +10,8 @@ function QuestionService($http, $q, $stateParams) {
     text: '',
     answers: [{
       text: ''
-    }]
+    }],
+    type_question: 'one_select'
   }];
 
   service.questionary = {
@@ -34,7 +35,8 @@ function QuestionService($http, $q, $stateParams) {
       text:'',
       answers:[{
         text:''
-      }]
+      }],
+      type_question: 'one_select'
     });
   }
 
@@ -47,7 +49,6 @@ function QuestionService($http, $q, $stateParams) {
         _destroy: '1'
       });
     }
-    console.log (service.questionary.questions);
   }
 
   function addAnswer(question) {

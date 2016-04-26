@@ -1,7 +1,16 @@
 <div class="form-group question clearfix">
   <div class="row">
-    <div class="col-lg-2 col-md-2 pull-left">
-      <label for="textArea" class="control-label">Question {{index}}</label>
+    <div class="col-lg-4 col-md-4 pull-left">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 question-label">
+          <label for="textArea" class="control-label">Question {{index}}</label>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <select class="form-control type-question" id="select" ng-model="question.type_question">
+            <option class="test-fa" ng-repeat="type in vm.types" value="{{type.type_question}}">{{type.display_value}}</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="col-lg-2 col-md-2 pull-right remove-question text-right">
       <label class="control-label" data-toggle="tooltip"
@@ -13,7 +22,7 @@
   </div>
   <div class="row">
     <div class="col-lg-12 col-md-12">
-      <textarea class="form-control" style="resize: none" rows="2" id="textArea" placeholder="Question text" ng-model="question.text"></textarea>
+      <textarea class="form-control question-text" style="resize: none" rows="2" id="textArea" placeholder="Question text" ng-model="question.text"></textarea>
     </div>
   </div>
   <div class="row answers">
@@ -22,5 +31,4 @@
     </div>
   </div>
   <a class="btn btn-primary btn-light-blue btn-block" ng-click="vm.addAnswer(question)"><i class="fa fa-plus"></i>New Answer</a>
-  <a class="btn btn-default pull-right add-question" ng-click="vm.addQuestion()"><i class="fa fa-plus"></i>New Question</a>
 </div>

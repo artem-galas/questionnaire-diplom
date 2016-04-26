@@ -28,9 +28,17 @@ function answer() {
     let vm = this;
     let questionService = QuestionService;
     vm.removeAnswer = removeAnswer;
+    vm.addAnswer = addAnswer;
 
     function removeAnswer(question,answer) {
       questionService.removeAnswer(question, answer);
+    }
+
+    function addAnswer(question) {
+      questionService.addAnswer(question);
+      setTimeout(function () {
+        angular.element('answer:last .answer-text').focus();
+      });
     }
   }
 }

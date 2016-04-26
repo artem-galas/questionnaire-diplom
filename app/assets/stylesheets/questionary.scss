@@ -12,6 +12,16 @@
         cursor: pointer;
       }
     }
+    .question-label {
+      height: 37px;
+      >label{
+        line-height: 40px;
+      }
+    }
+    .answer-checkbox {
+      top: 7px;
+      padding-right: 0;
+    }
   }
 }
 

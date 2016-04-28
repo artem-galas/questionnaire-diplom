@@ -69,6 +69,7 @@ function QuestionService($http, $q, $stateParams) {
   }
 
   function sendFormQuestionary(data) {
+
     let questionary = {
       questionary: angular.copy(data)
     };
@@ -93,14 +94,16 @@ function QuestionService($http, $q, $stateParams) {
 
     if ($stateParams.id) {
       let url = `/users/questionaries/${$stateParams.id}`;
-      $http.patch(url, questionary).then(function(responce){
+      return $http.patch(url, questionary).then(function(responce){
+        return responce.data
       }, function(error){
         console.log (error);
       });
     }
     else {
       let url = `/users/questionaries/`;
-      $http.post(url, questionary).then(function(responce){
+      return $http.post(url, questionary).then(function(responce){
+        return responce.data
       }, function(error){
         console.log (error);
       });

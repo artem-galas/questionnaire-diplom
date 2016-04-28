@@ -2,9 +2,9 @@
 
 angular.module('questionary')
   .controller('QuestionaryCtrl', QuestionaryCtrl);
-QuestionaryCtrl.$inject = ['QuestionService', 'questionary'];
+QuestionaryCtrl.$inject = ['QuestionService', 'questionary', '$state'];
 
-function QuestionaryCtrl(QuestionService, questionary) {
+function QuestionaryCtrl(QuestionService, questionary, $state) {
   let vm = this;
   let questionService = QuestionService;
   vm.questionary = questionary;
@@ -22,7 +22,15 @@ function QuestionaryCtrl(QuestionService, questionary) {
 
   function saveQuestionary() {
     let data = vm.questionary;
-    console.log (data);
-    questionService.sendFormQuestionary(data);
+    // console.log (data);
+    let submit_btn = angular.element('.submit-btn-form');
+    submit_btn.button('loading');
+    console.log (data.id);
+    setTimeout(function () {
+      questionService.sendFormQuestionary(data).then(function (response) {
+        // window.location.replace(`/questionaries/${data.id}`);
+        submit_btn.button('reset');
+      });
+    },1000);
   }
 }

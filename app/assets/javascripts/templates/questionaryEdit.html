@@ -5,6 +5,7 @@
       <question ng-hide="question._destroy" ng-repeat="question in vm.questions" index="{{$index+1}}" question="question"></question>
       <a class="btn btn-default pull-right add-question" ng-click="vm.addQuestion()"><i class="fa fa-plus"></i>New Question</a>
     </fieldset>
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <button type="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Submit Changes"
+            class="btn btn-primary btn-lg submit-btn-form">Submit</button>
   </form>
 </div>

@@ -6,11 +6,8 @@ class QuestionariesController < ApplicationController
   end
 
   def create
-    if q = current_user.questionaries.create(questionary_params)
-      render nothing:true, status: :ok
-    else
-      render nothing:true, status: :internal_server_error
-    end
+    q = current_user.questionaries.create(questionary_params)
+    render json: q
   end
 
   def index

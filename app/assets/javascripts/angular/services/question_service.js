@@ -94,16 +94,17 @@ function QuestionService($http, $q, $stateParams) {
 
     if ($stateParams.id) {
       let url = `/users/questionaries/${$stateParams.id}`;
-      return $http.patch(url, questionary).then(function(responce){
-        return responce.data
+      return $http.patch(url, questionary).then(function(response){
+        return response.data
       }, function(error){
         console.log (error);
       });
     }
     else {
       let url = `/users/questionaries/`;
-      return $http.post(url, questionary).then(function(responce){
-        return responce.data
+      return $http.post(url, questionary).then(function(response){
+        window.location.replace(`/users/questionaries/${response.data.id}/edit`);
+        return response.data
       }, function(error){
         console.log (error);
       });

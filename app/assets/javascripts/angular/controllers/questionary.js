@@ -22,13 +22,10 @@ function QuestionaryCtrl(QuestionService, questionary, $state) {
 
   function saveQuestionary() {
     let data = vm.questionary;
-    // console.log (data);
     let submit_btn = angular.element('.submit-btn-form');
     submit_btn.button('loading');
-    console.log (data.id);
     setTimeout(function () {
       questionService.sendFormQuestionary(data).then(function (response) {
-        // window.location.replace(`/questionaries/${data.id}`);
         submit_btn.button('reset');
       });
     },1000);

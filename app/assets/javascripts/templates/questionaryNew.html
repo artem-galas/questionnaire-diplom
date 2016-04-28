@@ -1,9 +1,11 @@
 <div class="container questionary-form">
-  <form name="questionaryNew" ng-submit="vm.saveQuestionary()">
+  <form name="questionaryNew" ng-submit="vm.saveQuestionary()" onkeypress="return event.keyCode != 13;">
     <fieldset>
       <legend class="questionary-form-name" contenteditable ng-model="vm.questionary.title" only-text="true"></legend>
       <question ng-repeat="question in vm.questions" index="{{$index+1}}" question="question"></question>
+      <a class="btn btn-default pull-right add-question" ng-click="vm.addQuestion()"><i class="fa fa-plus"></i>New Question</a>
     </fieldset>
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <button type="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Submit Changes"
+            class="btn btn-primary btn-lg submit-btn-form">Submit</button>
   </form>
 </div>

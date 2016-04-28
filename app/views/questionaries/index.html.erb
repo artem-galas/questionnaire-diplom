@@ -3,6 +3,9 @@
     <h3><%= questionary.title %></h3>
     <span><%=questionary.id %></span>
     <%= link_to 'Edit Questionary', edit_questionary_path(id:questionary.id) %>
+    <p>
+      <%= link_to 'Preview Questionary', questionaries_show_path(id:questionary.id), target: "_blank" %>
+    </p>
     <%= render partial: "questions", locals: {questions: questionary.questions} %>
   <%end%>
   <br/>

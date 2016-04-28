@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   # Route for public qurstionary
-  get '/questionaries/:id' => 'questionaries#show'
+  get '/questionaries/:id' => 'questionaries#show', as: :questionaries_show
   get '/users/questionaries/:id/statistic' => 'questionaries#statistic'
   patch '/answers' => 'answers#update'
 

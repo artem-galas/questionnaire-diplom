@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
     params_answer.each do |id|
       Answer.increment_counter(:answer_count, id)
     end
-    render status: :ok
+    render nothing:true, status: :ok
   end
 
   private

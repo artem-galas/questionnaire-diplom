@@ -51,6 +51,12 @@ class QuestionariesController < ApplicationController
     end
   end
 
+  def destroy
+    q = Questionary.find(params[:id])
+    q.destroy
+    redirect_to questionaries_path
+  end
+
   def statistic
   end
 

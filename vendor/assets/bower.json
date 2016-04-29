@@ -5,6 +5,6 @@
     "angular-ui-router": "latest",
     "ng-content-editable": "latest",
     "lodash": "latest",
-    "angular-chart.js": "latest"
+    "checklist-model": "latest"
   }
 }

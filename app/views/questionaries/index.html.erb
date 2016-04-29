@@ -1,13 +1,19 @@
 <div class="container">
+  <br/>
+  <%= link_to 'Create new questionary', new_questionary_path %>
   <% @q.each do |questionary| %>
     <h3><%= questionary.title %></h3>
     <span><%=questionary.id %></span>
     <%= link_to 'Edit Questionary', edit_questionary_path(id:questionary.id) %>
-    <p>
+    <div>
       <%= link_to 'Preview Questionary', questionaries_show_path(id:questionary.id), target: "_blank" %>
-    </p>
+    </div>
+    <div>
+      <%= link_to 'Statistic Questionary', questionaries_statistic_path(id:questionary.id), target: "_blank" %>
+    </div>
+    <div>
+      <%= link_to 'Destroy',  questionary,  method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
     <%= render partial: "questions", locals: {questions: questionary.questions} %>
   <%end%>
-  <br/>
-  <%= link_to 'Create new questionary', new_questionary_path %>
 </div>

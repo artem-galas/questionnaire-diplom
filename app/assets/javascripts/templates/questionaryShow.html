@@ -7,23 +7,20 @@
           {{question.text}}
           <ol>
             <li ng-repeat="answer in question.answers">
-              <label for="{{answer.id}}" ng-show="question.type_question === 'one_select'">
-
-                <!--<input type="radio" ng-show="question.type_question === 'one_select'" ng-model="answer.text" ng-value="answer.text">-->
-                <!--<input type="checkbox" ng-show="question.type_question === 'multi_select'" ng-model="answer.text" ng-value="answer.text">-->
-
+              <label for="{{answer.id}}" ng-if="question.type_question === 'one_select'">
                 <input type="radio" id="{{answer.id}}" name="question[{{question.id}}]answer"
-                       ng-click="vm.answer(answer.id, question.id)" ng-value="answer.id">
+                       ng-value="answer.id">
                 {{answer.text}}
               </label>
 
-              <label for="{{answer.id}}" ng-show="question.type_question === 'multi_select'">
+              <!--<label for="{{answer.id}}" ng-show="question.type_question === 'multi_select'">-->
+                <!--<input type="checkbox" id="{{answer.id}}" checklist-model="vm.answers" checklist-value="answer.id">-->
+                <!--{{answer.text}}-->
+              <!--</label>-->
 
-                <!--<input type="radio" ng-show="question.type_question === 'one_select'" ng-model="answer.text" ng-value="answer.text">-->
-                <!--<input type="checkbox" ng-show="question.type_question === 'multi_select'" ng-model="answer.text" ng-value="answer.text">-->
-
-                <input type="checkbox" id="{{answer.id}}" name="question[{{question.id}}]answer"
-                       ng-click="vm.answer(answer.id, question.id)" ng-value="answer.id">
+              <label for="{{answer.id}}" ng-if="question.type_question === 'multi_select'">
+                <input type="checkbox" id="{{answer.id}}" ng-value="answer.id"
+                       name="question[{{question.id}}]answer[{{answer.id}}]">
                 {{answer.text}}
               </label>
 
@@ -34,14 +31,14 @@
     </div>
     <button type="submit" class="btn btn-primary">Answer</button>
   </form>
-  <div class="fb-share-button" data-href="{{window.location.href}}" data-layout="button" data-mobile-iframe="true"></div>
+  <!--<div class="fb-share-button" data-href="{{window.location.href}}" data-layout="button" data-mobile-iframe="true"></div>-->
 </div>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=709822052383946";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<!--<div id="fb-root"></div>-->
+<!--<script>(function(d, s, id) {-->
+  <!--var js, fjs = d.getElementsByTagName(s)[0];-->
+  <!--if (d.getElementById(id)) return;-->
+  <!--js = d.createElement(s); js.id = id;-->
+  <!--js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=709822052383946";-->
+  <!--fjs.parentNode.insertBefore(js, fjs);-->
+<!--}(document, 'script', 'facebook-jssdk'));</script>-->

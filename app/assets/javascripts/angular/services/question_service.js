@@ -138,9 +138,8 @@ function QuestionService($http, $q, $stateParams) {
   }
 
   function answerSubmit(data) {
-    console.log (data);
-    $http.patch('/answers', data).then(function (responce) {
-      console.log (responce);
+    return $http.patch('/answers', data).then(function (responce) {
+      return responce
     })
   }
 

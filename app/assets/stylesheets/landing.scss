@@ -12,7 +12,7 @@ nav.navbar.navbar-inverse {
   padding-bottom: 50px;
   text-align: center;
   color: #f8f8f8;
-  background: url(intro-bg.jpg) no-repeat center center;
+  background: image-url('intro-bg.jpg') no-repeat center center;
   background-size: cover;
 }
 
@@ -37,6 +37,20 @@ nav.navbar.navbar-inverse {
 .intro-message > h3 {
   color: white;
 }
+.content-section-a {
+  padding: 50px 0;
+  background-color: #f8f8f8;
+  .note-book {
+    width: 511px;
+    height: 285px;
+    background: image-url('Laptop-with-img.png') no-repeat center center;
+    background-size: cover;
+  }
+  .note-book-text{
+    margin-top: 60px;
+  }
+}
+
 
 @media(max-width:767px) {
   .intro-message {
